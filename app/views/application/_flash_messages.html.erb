@@ -1,0 +1,7 @@
+<!--app/views/layouts/_flash.html.erb  -->
+<!--##Error Messages  -->
+<%flash.each do |password, msg| %>
+  <div class='alert alert-<%=password %>'>
+    <%=msg%>
+  </div>
+<%end%>

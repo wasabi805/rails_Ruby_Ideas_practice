@@ -1,0 +1,67 @@
+<h1><center>----The Main POST PAGE------</center></h1>
+<br><br><%=@posts.inspect%>>post OBJ
+<div id="postIndex">
+
+  <%=@test.inspect%> hjdahjkhjklsalhjljhkdsa
+
+  <div id="PostDash">
+
+    <!-- IMPORTANT ! Your Post table needs a user_id! -->
+    <!-- Make a hidden input and set it the the current user's id-->
+    <h3>Hi <%=current_user.name%></h3><br>
+    <form action="/create_post" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="text" name="post[content]" placeholder="Post something witty here:">
+      <input type="hidden" name="post[user_id]" value="<%=current_user.id%>">
+      <button type="submit" class="btn btn-primary">Submit Your Idea! </button>
+      <form action="logout" method="post"><button type="button" class="btn btn-primary">Log Out</button></form>
+    </form>
+  </div>
+  <%=session[:user_id].inspect%>
+  <br><br>
+
+
+    <div id="allUsersPost"> <!--Every time a new post comes from a different user is will recieve it's own div  -->
+      <% @post.each do |post|%>
+      <table>
+
+        <th><%=post.user.name%> says:  <%=post.content%></th>
+        <!--  #################           The Like button                ####################-->
+              <td><form action="LikeThisPost" method="post">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="like[user_id]" value="<%=current_user.id%>">
+                <input type="hidden" name="like[post_id]" value="<%=post.id%>">
+                <br>
+                <button type="submit" class="link"><span>Like</span></button>
+                </form>
+                <br>
+                <a href="posts/<%=post.id%>"> <%=post.likes.count%> <span>people liked this </span></a></td>
+                <br>
+                <!--Delete Button for Logged in User  -->
+                <% if @loggedInUserId == post.user_id %>
+                  <%=button_to "Delete", {:action => 'destroy', :id => post.id}, :class =>'action delete' %>
+                <% end %>
+                <!-- <%=post.id%> -->
+
+
+                </table>
+                <%end%>
+                <br>
+
+                <div class="test">
+                  <%@post.each do |post|%><br>
+                  <%=post.id%><br>
+                  <%=post.content%><br>
+                  <%=post.user.name%><br>
+                  <%end%>
+                </div>
+
+    </div>
+
+
+
+
+
+
+
+  </div><br>

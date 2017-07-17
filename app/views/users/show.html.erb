@@ -1,0 +1,19 @@
+<div class="showUserdata">
+<h1>The home of <%=@user.name%> </h1>
+<a href="/bright_ideas">Bright Ideas</a><br>
+
+<form action="logout" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="session[user_id]" value="<%=current_user.id%>">
+  <button type="submit" class="link"><span>Log Out</span></button>
+  </form>
+
+<table>
+  <ul style="list-style: none;">
+    <h3><li>Name: <%=@user.name%></li></h3>
+    <h3><li>Alias: <%=@user.alias%></li></h3>
+    <h3><li>Email:<%=@user.email%></li></h3>
+  </ul>
+</table>
+
+</div>

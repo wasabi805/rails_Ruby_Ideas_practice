@@ -1,0 +1,42 @@
+
+  <div class="postDetails">
+
+<!-- The Post -->
+    <div id="posterName">
+
+    </div><br><br>
+
+    <div id="postContent">
+      <h2><%=@postObj.user.name%> says,</h2>
+      <h3>"<%=@postObj.content%>"</h3>
+
+      <br><br>
+
+    </div><br>
+<div class="">
+
+  <h4>People who liked this post:</h5>
+</div>
+
+
+
+<table>
+  <tr>
+    <th>Alias</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <%@newLikerId.each do |liker| %>
+    <td><a href="/users/<%=liker.id%>"><%=liker.alias%> </a></td>
+    <td><%=liker.name%><%=liker.id%></td>
+  </tr>
+    <%end%>
+</table>
+
+<br>
+
+
+
+
+
+  </div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><!--app/v  -->
+<html>
+  <head>
+    <title>IdeaBelt</title>
+    <link rel="stylesheet" href="https://bootswatch.com/sandstone/bootstrap.min.css">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+
+<!-- The / in front off logout is important/needs to be there otherwise you will not be able logout from anywhere on the site -->
+    <form action="/logout" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+      <br>
+      <button type="submit" class="link"><span>Logout</span></button>
+      </form>
+
+
+      <!-- <%=current_user.inspect%> -->
+
+
+
+
+      <%=render 'flash_messages' %>
+      <%= yield %>
+
+  </body>
+</html>

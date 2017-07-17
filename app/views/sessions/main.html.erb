@@ -1,0 +1,45 @@
+
+  <div class="row">
+
+
+    <div class="col-md-6 col-md-offset-2">
+      <form action="/login_attempt" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <h1>Log in</h1>
+        <label for="email">Email</label>
+        <input name="session[email]" type="text" />
+        <label for="password">Password</label>
+        <input name="session[password]" type="password" />
+
+        <button type="submit" class="btn btn-primary btn-med">Login</button>
+      </form><br>
+    </div>
+
+
+      <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+        <h3>Register</h3>
+        <form action="/main" method="post">
+          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+          <label for="name">Name</label>
+          <input type="text" name="user[name]"><br>
+          <label for="Alias">Alias</label>
+          <input type="text" name="user[alias]"><br>
+          <label for="Email">Email</label>
+          <input type="text" name="user[email]"><br>
+          <label for="password">Password</label>
+          <input type="text" name="user[password]"><br>
+          <button type="submit" class="btn btn-primary btn-med">Register</button>
+        </form>
+      </div>
+      <!-- <% if !flash.empty?%>>
+      <div class="flash">
+        <%=flash.keys.each do |k|%>
+        <div class="<%=k%>">
+          <%=flash[k]%>
+          <% end%>>
+        </div>
+    <% end%>> -->
+
+    </div>
+</div>
